@@ -1,0 +1,41 @@
+﻿Checkpoint 1: (10%)
+• May 11, 2017
+• Prepare for 1-3 ideas of your project and the
+techniques you may use in the project
+• Suggest using a story to introduce the ideas
+• Describe the difficulties you may encounter
+and the possible solutions you will use
+• Please upload your slides before the class
+´ only prototype, and show your idea.
+´ Construct the your template, and core javascript code(your core activity)
+
+*********************************************
+idea
+technique
+story
+difficulty-solution
+
+介面
+-地圖 * 參加揪團
+-使用者資訊
+-管理揪團
+
+template
+-開團
+	-使用者選擇條件
+	-出現在Map上
+	-其他人看到可以去加入
+	-出團
+
+揪團
+
+範圍揪
+-電玩遊戲
+-桌遊
+-娛樂揪
+-購物揪
+
+限制 - 年齡、性別等等
+預定時間
+
+檢舉惡意使用者
