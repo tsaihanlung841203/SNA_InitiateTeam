@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://demo.cssmoban.com/cssthemes4/amz_17_bef/index.html -->
+<html class="js cssanimations">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./首页_files/amazeui.min.css">
+    <link rel="stylesheet" href="./首页_files/wap.css">
+    <title>首頁</title>
+
+    <style>
+        header {
+            background-color: #666;
+            color: #666;
+        }
+
+        #map {
+            height: 40rem;
+            margin-bottom: 10rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="pet_mian">
+        <h1>揪揪樂</h1>
+        <a>帳號管理</a>
+        <a>登出</a>
+    </header>
+
+    <div data-am-widget="gotop" class="am-gotop am-gotop-fixed am-no-layout">
+        <a href="http://demo.cssmoban.com/cssthemes4/amz_17_bef/index.html#top" title="">
+        <img class="am-gotop-icon-custom" src="./首页_files/goTop.png">
+    </a>
+    </div>
+
+
+    <script src="./首页_files/jquery.min.js.下載 "></script>
+    <script src="./首页_files/amazeui.min.js.下載 "></script>
+    <script>
+        $(function () {
+
+            // 动态计算新闻列表文字样式
+            auto_resize();
+            $(window).resize(function () {
+                auto_resize();
+            });
+            $('.am-list-thumb img').load(function () {
+                auto_resize();
+            });
+
+            $('.am-list > li:last-child').css('border', 'none');
+            function auto_resize() {
+                $('.pet_list_one_nr').height($('.pet_list_one_img').height());
+
+            }
+            $('.pet_nav_gengduo').on('click', function () {
+                $('.pet_more_list').addClass('pet_more_list_show');
+            });
+            $('.pet_more_close').on('click', function () {
+                $('.pet_more_list').removeClass('pet_more_list_show');
+            });
+        });
+    </script>
+
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap " asyncdefer></script>
+
+    <iframe id="google_osd_static_frame_3091344834802 " name="google_osd_static_frame " style="display: none; width: 0px;
+        height: 0px; "
+        src="./首页_files/saved_resource(1).html "></iframe>
+</body>
+
+</html>

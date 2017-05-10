@@ -1,0 +1,598 @@
+(function (lib, img, cjs, ss, an) {
+
+var p; // shortcut to reference prototypes
+lib.webFontTxtInst = {}; 
+var loadedTypekitCount = 0;
+var loadedGoogleCount = 0;
+var gFontsUpdateCacheList = [];
+var tFontsUpdateCacheList = [];
+lib.ssMetadata = [];
+
+
+
+lib.updateListCache = function (cacheList) {		
+	for(var i = 0; i < cacheList.length; i++) {		
+		if(cacheList[i].cacheCanvas)		
+			cacheList[i].updateCache();		
+	}		
+};		
+
+lib.addElementsToCache = function (textInst, cacheList) {		
+	var cur = textInst;		
+	while(cur != exportRoot) {		
+		if(cacheList.indexOf(cur) != -1)		
+			break;		
+		cur = cur.parent;		
+	}		
+	if(cur != exportRoot) {		
+		var cur2 = textInst;		
+		var index = cacheList.indexOf(cur);		
+		while(cur2 != cur) {		
+			cacheList.splice(index, 0, cur2);		
+			cur2 = cur2.parent;		
+			index++;		
+		}		
+	}		
+	else {		
+		cur = textInst;		
+		while(cur != exportRoot) {		
+			cacheList.push(cur);		
+			cur = cur.parent;		
+		}		
+	}		
+};		
+
+lib.gfontAvailable = function(family, totalGoogleCount) {		
+	lib.properties.webfonts[family] = true;		
+	var txtInst = lib.webFontTxtInst && lib.webFontTxtInst[family] || [];		
+	for(var f = 0; f < txtInst.length; ++f)		
+		lib.addElementsToCache(txtInst[f], gFontsUpdateCacheList);		
+
+	loadedGoogleCount++;		
+	if(loadedGoogleCount == totalGoogleCount) {		
+		lib.updateListCache(gFontsUpdateCacheList);		
+	}		
+};		
+
+lib.tfontAvailable = function(family, totalTypekitCount) {		
+	lib.properties.webfonts[family] = true;		
+	var txtInst = lib.webFontTxtInst && lib.webFontTxtInst[family] || [];		
+	for(var f = 0; f < txtInst.length; ++f)		
+		lib.addElementsToCache(txtInst[f], tFontsUpdateCacheList);		
+
+	loadedTypekitCount++;		
+	if(loadedTypekitCount == totalTypekitCount) {		
+		lib.updateListCache(tFontsUpdateCacheList);		
+	}		
+};
+// symbols:
+
+
+
+(lib.aim = function() {
+	this.initialize(img.aim);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,302,302);
+
+
+(lib.l = function() {
+	this.initialize(img.l);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,728,139);
+
+
+(lib.r = function() {
+	this.initialize(img.r);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,728,139);
+
+
+(lib.title = function() {
+	this.initialize(img.title);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,374,110);
+
+
+(lib.title2 = function() {
+	this.initialize(img.title2);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,374,110);// helper functions:
+
+function mc_symbol_clone() {
+	var clone = this._cloneProps(new this.constructor(this.mode, this.startPosition, this.loop));
+	clone.gotoAndStop(this.currentFrame);
+	clone.paused = this.paused;
+	clone.framerate = this.framerate;
+	return clone;
+}
+
+function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
+	var prototype = cjs.extend(symbol, cjs.MovieClip);
+	prototype.clone = mc_symbol_clone;
+	prototype.nominalBounds = nominalBounds;
+	prototype.frameBounds = frameBounds;
+	return prototype;
+	}
+
+
+(lib.補間動畫1 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.instance = new lib.r();
+	this.instance.parent = this;
+	this.instance.setTransform(-220,-185);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-220,-185,728,139);
+
+
+(lib.左上角ICON = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#359AD6").s().p("AgJAZIgDAAIgHgBIgTAAQgDgTAUgFQALgCAKABQADgOAMgLQANgKAIAKQAGAIgHAXQgFAQgHALQgOgFgSgCg");
+	this.shape.setTransform(18.4,7.4);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#EF8018").s().p("Ag9AJQgOgqAMgPQAPgSAXAUQAWASADAZIAmADQAlAJgHAiIgDAAIgfABIgQABQghAEgaAJQgMgYgIgZg");
+	this.shape_1.setTransform(13.8,11.6);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_1},{t:this.shape}]}).wait(1));
+
+	// 神來也麻將
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f("#000000").s().p("ADiA1QgCgEgCgFQgJAHgLAHIgGgKQAOgIAIgJIgBgFQgDgNgBgWIgLACIgCgLIANgDIgCgmIAMAAIABAkIAdgEIACALIgeAFIADAdQAGgJAHgPIAKAGQgLAWgIALQADAOAEAAQADAAAEgSIAJAJQgGAWgLABQgHAAgFgIgAjdAxQAQgJAGgLQAFgLABgZIgOAAIAAgMIBGAAIAAAMIgVAAIAAAxQABAEAFABIABAAQADgBACgCQABgCABgUIALAEQgBAYgEAEQgDAFgJgBIgIAAQgFABgDgEQgDgDAAgGIAAg1IgLAAQgBAZgGAOQgFAPgUANgACkA7IAAgSIgdAAIAAgKIAdAAIAAgIIgZAAIAAguIA7AAIAAAuIgYAAIAAAIIAcAAIAAAKIgcAAIAAASgACuANIANAAIAAgKIgNAAgACXANIANAAIAAgKIgNAAgACugEIANAAIAAgKIgNAAgACXgEIANAAIAAgKIgNAAgABtA7IAAgGIgkAAIAAAGIgLAAIAAgmIA6AAIAAAmgABJAsIAkAAIAAgNIgkAAgAAWA7IAAg6QgFAOgHALIgFgPQAKgPAGgUIgOAAIAAgLIAPAAIAAgZIALAAIAAAZIALAAIAAALIgLAAIAAAEIAPAUIgGAJIgJgQIAABCgAAmAxQAJgOADgPQACgOABgNIAAgRIgEABIgEgKQAQgKAQgQIALAAQAQAOAVALIgFALIgEgCIAAAoIg2AAIgBAJQgEARgJARgAA/AFIAqAAIAAgHIgqAAIAAAHgAA/gKIAqAAIAAgHIgqAAgABdgbIATAAQgSgMgMgKQgNANgMAJIAYAAIgIgKIALgEQAFAFAEAJgAg9A5IAAg/IAtAAIAAAoQAAAIgCADQgDADgFAAIgOAAIgDgMIAMAAQAEgBAAgFIAAgbIgWAAIAAA2gAhxAzIAAg5IAsAAIAAA2IgLAAIAAgHIgVAAIAAAKgAhlAeIAVAAIAAgbIgVAAgAj+AjIASgGIAAggIgPAAIAAgLIAPAAIAAgaIgQAAIAAgMIAtAAIAAAMIgRAAIAAAaIAPAAIAAALIgPAAIAAAdIARgHIAAANQgUAJgYAGgAh7gYQAVgJAMgIQAJgGAKgMIANAAQAMANAMAGQAKAGAUAIIgHALQgKgDgLgGIgCgBIAAAJIg+AAIAAgHIgUAKgAhWgcIgDABIA0AAQgOgHgNgOQgLAMgLAIgACsgbIAAgcIAcAAIAAAcgAC2gkIAIAAIAAgKIgIAAgACLgcIAAgbIAbAAIAAAbgACUgkIAIAAIAAgLIgIAAgADlgxIAKgDQAGAJAGAKIgLAFQgFgLgGgKgAjMgoIAAgMIA/AAIAAAMg");
+	this.shape_2.setTransform(53.1,11.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.shape_2).wait(1));
+
+	// flash0.ai
+	this.shape_3 = new cjs.Shape();
+	this.shape_3.graphics.f("#999999").s().p("AoQBpIAAjRIQgAAIgxBjQgjA+gPAOQgmAihTAAgAoKBkIM+AAQBKAAAkgbQAXgQAYgvIA4htIwTAAg");
+	this.shape_3.setTransform(42.7,10.5);
+
+	this.shape_4 = new cjs.Shape();
+	this.shape_4.graphics.f("#FFFFFF").s().p("AoQBpIAAjRIQgAAIgxBjQgjA+gPAOQgmAihTAAg");
+	this.shape_4.setTransform(42.7,10.5);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_4},{t:this.shape_3}]}).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.左上角ICON, new cjs.Rectangle(-10.2,0,105.7,21), null);
+
+
+(lib.title_1 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.instance = new lib.title();
+	this.instance.parent = this;
+	this.instance.setTransform(-187,-69.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.title_1, new cjs.Rectangle(-187,-69.5,374,110), null);
+
+
+(lib.元件10 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.rf(["#860000","#000000"],[0,1],0,0,0,0,0,1029).s().p("Eid/AdtMAAAg7ZME7/AAAMAAAA7ZgAn/oAQjVDVAAErQAAEtDVDUQDTDVEtgBQEsABDVjVQDUjUAAktQAAkrjUjVQjVjVksABQktgBjTDVg");
+
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-1011.2,-190,2022.5,380.1);
+
+
+(lib.元件8 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.instance = new lib.title2();
+	this.instance.parent = this;
+	this.instance.setTransform(-187,-69.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.元件8, new cjs.Rectangle(-187,-69.5,374,110), null);
+
+
+(lib.元件4 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.instance = new lib.l();
+	this.instance.parent = this;
+	this.instance.setTransform(-220,-185);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.元件4, new cjs.Rectangle(-220,-185,728,139), null);
+
+
+(lib.arear = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#66FFFF").s().p("AtHV4MAAAgrvIaPAAMAAAArvg");
+	this.shape._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(3).to({_off:false},0).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = null;
+
+
+(lib.areal = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#66FFFF").s().p("AtHV4MAAAgrvIaPAAMAAAArvg");
+	this.shape._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(3).to({_off:false},0).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = null;
+
+
+(lib.元件9 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 2
+	this.instance = new lib.aim();
+	this.instance.parent = this;
+	this.instance.setTransform(-80.9,-80.9,0.536,0.536);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	// 圖層 1
+	this.instance_1 = new lib.元件10("synched",0);
+	this.instance_1.parent = this;
+	this.instance_1.alpha = 0.852;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.元件9, new cjs.Rectangle(-1011.2,-190,2022.5,380.1), null);
+
+
+(lib.元件7 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 2
+	this.instance = new lib.元件8();
+	this.instance.parent = this;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({alpha:0},7).to({alpha:1},7).wait(1));
+
+	// 圖層 1
+	this.instance_1 = new lib.title_1();
+	this.instance_1.parent = this;
+	this.instance_1.shadow = new cjs.Shadow("#000000",0,0,20);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(15));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-208,-90.5,420,155);
+
+
+(lib.元件5複製2 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_9 = function() {
+		/* 在此影格停止
+		時間軸會在插入此程式碼的影格停止/暫停。
+		亦可用來停止/暫停影片片段的時間軸。
+		*/
+		
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(9).call(this.frame_9).wait(1));
+
+	// 圖層 2 (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("A51V4MgkpgrvMBYUAAAMAkpArvg");
+	mask.setTransform(-301.4,0);
+
+	// 圖層 1
+	this.instance = new lib.元件4();
+	this.instance.parent = this;
+	this.instance.setTransform(-301.3,96.5,0.76,0.76,0,0,0,-0.1,0);
+
+	var maskedShapeInstanceList = [this.instance];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({regX:144,regY:-115.5,scaleX:0.89,scaleY:0.89,x:-207.3,y:16.8},0).wait(1).to({scaleX:0.95,scaleY:0.95,x:-214.4,y:20.6},0).wait(1).to({scaleX:0.98,scaleY:0.98,x:-218.9,y:22.9},0).wait(1).to({scaleX:1.01,scaleY:1.01,x:-221.9,y:24.5},0).wait(1).to({scaleX:1.03,scaleY:1.03,x:-224,y:25.6},0).wait(1).to({scaleX:1.04,scaleY:1.04,x:-225.4,y:26.4},0).wait(1).to({scaleX:1.05,scaleY:1.05,x:-226.3,y:26.8},0).wait(1).to({scaleX:1.05,scaleY:1.05,x:-226.8,y:27.1},0).wait(1).to({regX:-0.1,regY:0,scaleX:1.05,scaleY:1.05,x:-378.3,y:148.5},0).wait(1));
+
+	// 圖層 3
+	this.instance_1 = new lib.補間動畫1("synched",0);
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(-110.4,102.1,0.85,0.85);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(10));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-468.4,-55.1,789.8,118.2);
+
+
+(lib.元件5複製 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_9 = function() {
+		/* 在此影格停止
+		時間軸會在插入此程式碼的影格停止/暫停。
+		亦可用來停止/暫停影片片段的時間軸。
+		*/
+		
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(9).call(this.frame_9).wait(1));
+
+	// 圖層 2 (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("A9RV4MgdxgrvMBYUAAAMAdxArvg");
+	mask.setTransform(-255.4,34.4);
+
+	// 圖層 1
+	this.instance = new lib.元件4();
+	this.instance.parent = this;
+	this.instance.setTransform(-301.3,96.5,0.76,0.76,0,0,0,-0.1,0);
+
+	var maskedShapeInstanceList = [this.instance];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(10));
+
+	// 圖層 3
+	this.instance_1 = new lib.補間動畫1("synched",0);
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(-110.4,102.1,0.85,0.85);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1).to({regX:144,regY:-115.5,scaleX:0.97,scaleY:0.97,x:-0.6,y:4.6},0).wait(1).to({scaleX:1.03,scaleY:1.03,x:-6.4,y:5},0).wait(1).to({scaleX:1.07,scaleY:1.07,x:-10,y:5.2},0).wait(1).to({scaleX:1.09,scaleY:1.09,x:-12.5,y:5.3},0).wait(1).to({scaleX:1.11,scaleY:1.11,x:-14.3,y:5.4},0).wait(1).to({scaleX:1.12,scaleY:1.12,x:-15.4,y:5.5},0).wait(1).to({scaleX:1.12,scaleY:1.12,x:-16.1},0).wait(1).to({scaleX:1.13,scaleY:1.13,x:-16.5},0).wait(1).to({regX:-0.1,regY:0.2,scaleX:1.13,scaleY:1.13,x:-179.1,y:136},0).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-468.4,-55.1,789.8,118.2);
+
+
+(lib.元件3 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 2 (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("A51V4MgkpgrvMBYUAAAMAkpArvg");
+	mask.setTransform(-185.4,0);
+
+	// 圖層 1
+	this.instance = new lib.元件4();
+	this.instance.parent = this;
+	this.instance.setTransform(-231.3,62.1,0.76,0.76,0,0,0,-0.1,0);
+
+	var maskedShapeInstanceList = [this.instance];
+
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	// 圖層 3
+	this.instance_1 = new lib.補間動畫1("synched",0);
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(-40.4,67.7,0.85,0.85);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.元件3, new cjs.Rectangle(-398.4,-89.5,789.8,118.2), null);
+
+
+(lib.元件1 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 圖層 1
+	this.instance = new lib.元件9();
+	this.instance.parent = this;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({scaleX:0.98,scaleY:0.98,y:5},6,cjs.Ease.get(1)).to({scaleX:1,scaleY:1,y:0},6,cjs.Ease.get(-1)).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-1011.2,-190,2022.5,380.1);
+
+
+(lib.元件5 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_9 = function() {
+		/* 在此影格停止
+		時間軸會在插入此程式碼的影格停止/暫停。
+		亦可用來停止/暫停影片片段的時間軸。
+		*/
+		
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(9).call(this.frame_9).wait(1));
+
+	// 圖層 1
+	this.instance = new lib.元件3();
+	this.instance.parent = this;
+	this.instance.setTransform(-69.9,34.4,1.1,1.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({regX:-3.6,regY:-30.5,scaleX:1.06,scaleY:1.06,x:-73.7,y:2.2},0).wait(1).to({scaleX:1.04,scaleY:1.04,y:2.8},0).wait(1).to({scaleX:1.02,scaleY:1.02,x:-73.6,y:3.2},0).wait(1).to({scaleX:1.01,scaleY:1.01,y:3.4},0).wait(1).to({scaleX:1.01,scaleY:1.01,y:3.6},0).wait(1).to({scaleX:1,scaleY:1,x:-73.5,y:3.7},0).wait(1).to({scaleX:1,scaleY:1,y:3.8},0).wait(1).to({scaleX:1,scaleY:1,y:3.9},0).wait(1).to({regX:0,regY:0,x:-70,y:34.4},0).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-713.7,-119.6,1074.3,308);
+
+
+// stage content:
+(lib._728x90 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_1 = function() {
+		/* 在此影格停止
+		時間軸會在插入此程式碼的影格停止/暫停。
+		亦可用來停止/暫停影片片段的時間軸。
+		*/
+		
+		this.stop();
+		
+		
+		/* 自訂滑鼠游標
+		將預設滑鼠游標取代為特定元件實體。
+		*/
+		stage.canvas.style.cursor = "none";
+		this.movieClip_1.mouseEnabled = false;
+		this.addEventListener("tick", fl_CustomMouseCursor.bind(this));
+		
+		function fl_CustomMouseCursor() {
+			this.movieClip_1.x = stage.mouseX;
+			this.movieClip_1.y = stage.mouseY;
+		}
+		//若要儲存預設滑鼠指標，請取消下列各行的註解:
+		//this.removeEventListener("tick", fl_CustomMouseCursor.bind(this));
+		//stage.removeChild(movieClip_1);
+		//stage.canvas.style.cursor = "default";
+		
+		
+		
+		/* 按一下前往影格並停止
+		在特定元件實體上按一下，會將播放磁頭移到時間軸中的特定影格，並停止影片。
+		亦可用於主時間軸或影片片段時間軸。
+		
+		指示:
+		1. 決定您希望按一下元件實體時，播放磁頭前往的影格編號，並在下方程式碼中，將數字 5 取代為該編號。
+		2. EaselJS 中的影格編號從 0 開始，而非 1
+		*/
+		
+		
+		this.button_1.addEventListener("mouseover", fl_ClickToGoToAndStopAtFrame_2.bind(this));
+		
+		function fl_ClickToGoToAndStopAtFrame_2()
+		{
+			this.gotoAndStop(2);
+		}
+		
+		this.button_1.addEventListener("mouseout", fl_ClickToGoToAndPlayAtFrame_0.bind(this));
+		
+		function fl_ClickToGoToAndPlayAtFrame_0()
+		{
+			this.gotoAndPlay(0);
+		}
+		
+		this.button_2.addEventListener("mouseover", fl_ClickToGoToAndStopAtFrame_3.bind(this));
+		
+		function fl_ClickToGoToAndStopAtFrame_3()
+		{
+			this.gotoAndStop(3);
+		}
+		this.button_2.addEventListener("mouseout", fl_ClickToGoToAndPlayAtFrame_0.bind(this));
+		
+		function fl_ClickToGoToAndPlayAtFrame_0()
+		{
+			this.gotoAndPlay(0);
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(1).call(this.frame_1).wait(3));
+
+	// 圖層 1
+	this.instance = new lib.左上角ICON();
+	this.instance.parent = this;
+	this.instance.setTransform(-0.1,-1);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(4));
+
+	// area
+	this.button_2 = new lib.arear();
+	this.button_2.parent = this;
+	this.button_2.setTransform(668.4,45.5,1.411,0.447,0,-40.5,0,0.1,0.3);
+	new cjs.ButtonHelper(this.button_2, 0, 1, 2, false, new lib.arear(), 3);
+
+	this.button_1 = new lib.areal();
+	this.button_1.parent = this;
+	this.button_1.setTransform(431.4,45.5,1.411,0.447,0,-40.5,0,0.1,0.3);
+	new cjs.ButtonHelper(this.button_1, 0, 1, 2, false, new lib.areal(), 3);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.button_1,p:{regX:0.1,regY:0.3,scaleX:1.411,scaleY:0.447,x:431.4,y:45.5}},{t:this.button_2,p:{regY:0.3,scaleX:1.411,scaleY:0.447,x:668.4,y:45.5,regX:0.1}}]},1).to({state:[{t:this.button_2,p:{regY:0,scaleX:1.435,scaleY:0.583,x:665.7,y:40,regX:0.1}},{t:this.button_1,p:{regX:0,regY:0,scaleX:1.5,scaleY:0.583,x:418,y:40}}]},1).to({state:[{t:this.button_1,p:{regX:0.2,regY:0,scaleX:1.624,scaleY:0.564,x:406,y:38}},{t:this.button_2,p:{regY:0,scaleX:1.5,scaleY:0.564,x:669.3,y:38,regX:0}}]},1).wait(1));
+
+	// TITLE
+	this.instance_1 = new lib.元件7();
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(187,68);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(4));
+
+	// AIM
+	this.movieClip_1 = new lib.元件1();
+	this.movieClip_1.parent = this;
+	this.movieClip_1.setTransform(364.1,45);
+	this.movieClip_1._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.movieClip_1).wait(2).to({_off:false},0).wait(2));
+
+	// L&R
+	this.instance_2 = new lib.元件5();
+	this.instance_2.parent = this;
+	this.instance_2.setTransform(527.5,30.1,1,1,0,0,0,-16.7,-12);
+
+	this.instance_3 = new lib.元件5複製2();
+	this.instance_3.parent = this;
+	this.instance_3.setTransform(527.5,30.1,1,1,0,0,0,-16.7,-12);
+
+	this.instance_4 = new lib.元件5複製();
+	this.instance_4.parent = this;
+	this.instance_4.setTransform(527.5,30.1,1,1,0,0,0,-16.7,-12);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_2}]}).to({state:[{t:this.instance_3}]},2).to({state:[{t:this.instance_4}]},1).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(194.5,-32.5,1074.3,308);
+// library properties:
+lib.properties = {
+	width: 728,
+	height: 90,
+	fps: 24,
+	color: "#FFFFFF",
+	opacity: 1.00,
+	webfonts: {},
+	manifest: [
+		{src:"images/aim.png", id:"aim"},
+		{src:"images/l.jpg", id:"l"},
+		{src:"images/r.jpg", id:"r"},
+		{src:"images/title.png", id:"title"},
+		{src:"images/title2.png", id:"title2"}
+	],
+	preloads: []
+};
+
+
+
+
+})(lib = lib||{}, images = images||{}, createjs = createjs||{}, ss = ss||{}, AdobeAn = AdobeAn||{});
+var lib, images, createjs, ss, AdobeAn;
