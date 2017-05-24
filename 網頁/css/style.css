@@ -1220,7 +1220,7 @@
 
 		/* The Modal (background) */
 .modal1 {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 2; /* Sit on top */
     left: 0;

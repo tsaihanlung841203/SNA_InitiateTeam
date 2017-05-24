@@ -17,6 +17,12 @@
 
         #map {
             height: 100%;
+
+html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
         /* Optional: Makes the sample page fill the window. */
 
@@ -32,19 +38,7 @@
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDZ-Cj8xnOH6Ljc9p7Mv2NyNBz5q_Zk6I0",
-        authDomain: "parking-d00d7.firebaseapp.com",
-        databaseURL: "https://parking-d00d7.firebaseio.com",
-        projectId: "parking-d00d7",
-        storageBucket: "parking-d00d7.appspot.com",
-        messagingSenderId: "513666767938"
-      };
-      firebase.initializeApp(config);
-    </script>
+  
 		
 	</head>
 	<body>
@@ -223,10 +217,7 @@
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
-    <script src="db.js"></script>
-
-					
-					<!-- The Modal (contains the Sign Up form) -->
+    
 <div id="id03" class="modal1">
   <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content animate" action="/action_page.php">
