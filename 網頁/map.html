@@ -7,7 +7,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Generic - Transit by TEMPLATED</title>
+		<title>ParkingCha 樂停車</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -33,6 +33,7 @@
 						<li><a href=".html">Recent Search</a></li>
 						<li><a href=".html">My Rates</a></li>
 						<li><a href=".html">Account Setting</a></li>
+						<li><a href="index.html">Back home</a></li>
 						</li>
 					</ul>
 				</nav>
@@ -42,42 +43,28 @@
 			<section id="main" class="wrapper">
 				<div class="container">
 
-					<header class="major">
-						<h2>Login</h2>
-						<p>Lorem ipsum dolor sit aßmet nullam id egestas urna aliquam</p>
-					</header>
-<!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id01').style.display='block'">Login</button>
-
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" 
-class="close" title="Close Modal">&times;</span>
-
-  <!-- Modal Content -->
+					
+					<!-- The Modal (contains the Sign Up form) -->
+<div id="id03" class="modal1">
+  <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
+   <div class="imgcontainer" style="position:relative;top:50px;left:25%">
+      <img src="images/parkingcha_bl.png" height="30%" width="50%">
+     </div>
     <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+     <br /> 
+     
+      <input type="text" placeholder="今天想去哪兒呢？" name="email" required>
+<br /> 
+ 
+      <div class="clearfix">
+         <button type="submit" class="button special" class="btn">找車位囉！</button>
+        
+       
+      </div>
     </div>
   </form>
 </div>
-					
 
 				</div>
 			</section>
