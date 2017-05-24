@@ -29,12 +29,12 @@
 				<h1><a href="index.html">ParkingCha</a></h1>
 				<nav id="nav">
 					<ul>
-						<li><a href=".html">Finging Spot</a></li>
+						<li><a href=".html">Finding Spot</a></li>
 						<li><a href=".html">Recent Search</a></li>
 						<li><a href=".html">My Rates</a></li>
 						<li><a href=".html">Account Setting</a></li>
 						<li><a href=".html">Help</a></li>
-						<li><a href="#" class="button special">Login</a></li>
+						<li><button class="button special" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
 					</ul>
 				</nav>
 			</header>
@@ -170,6 +170,66 @@
 					</div>
 				</div>
 			</footer>
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"  
+ class="close" title="Close Modal">&times;</span>
 
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="images/parkingcha_bl.png" height="20%" width="40%">
+     </div>
+<br /> 
+     <br /> 
+     <br />  
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+     <br /> 
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+<br /> 
+      <button class="button special" type="submit">Login</button>
+
+     <button class="button special" onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'" >Sign Up</button>
+    </div>
+<br /> 
+
+    <div class="container" >
+      <button type="button" class="button special" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <br /> 
+      
+    </div>
+  </form>
+</div>
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content animate" action="/action_page.php">
+   <div class="imgcontainer">
+      <img src="images/parkingcha_bl.png" height="20%" width="40%">
+     </div>
+    <div class="container">
+     <br /> 
+     <br /> 
+     <br />  <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+<br /> 
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+<br /> 
+      <label><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+     <br /> 
+      <div class="clearfix">
+         <button type="submit" class="button special" class="signupbtn">Sign Up</button>
+         <button type="button" class="button special" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+       
+      </div>
+    </div>
+  </form>
+</div>
 	</body>
 </html>
