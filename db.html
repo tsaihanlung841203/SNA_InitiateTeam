@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Connect to DB</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDZ-Cj8xnOH6Ljc9p7Mv2NyNBz5q_Zk6I0",
+        authDomain: "parking-d00d7.firebaseapp.com",
+        databaseURL: "https://parking-d00d7.firebaseio.com",
+        projectId: "parking-d00d7",
+        storageBucket: "parking-d00d7.appspot.com",
+        messagingSenderId: "513666767938"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <body>
+    <div>
+        停車場：<br>
+        <input type="text" id="name">
+        <br>
+        位置：<br>
+        <input type="text" id="pos">
+        <br>
+        剩餘停車位：<br>
+        <input type="text" id="num">
+        <br>
+        <button id="btn1">送出</button>
+        <br><br><br>
+        查詢<br>
+        位置：<br>
+        <input type="text" id="search_pos">
+        <button id="btn2">查詢</button>
+        <p id="result"></p>
+    </div>
+    <script src="db.js"></script>
+  </body>
+</html>
