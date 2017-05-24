@@ -1055,7 +1055,12 @@
 			font-size: 1.5em;
 			margin-bottom: 1.75em;
 		}
-
+.map {
+		padding: 40em 0em 4em;
+		/* Style 1 Wrapper */
+		/* Style 2 Wrapper */
+		/* Style 3 Wrapper */
+	}
 /* Wrapper */
 
 	.wrapper {
