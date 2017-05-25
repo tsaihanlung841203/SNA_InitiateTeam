@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--
+	Transit by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>ParkingCha 樂停車</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+        <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+        #map {
+            height: 100%;
+
+html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        /* Optional: Makes the sample page fill the window. */
+
+       
+    </style>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+        <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDZ-Cj8xnOH6Ljc9p7Mv2NyNBz5q_Zk6I0",
+        authDomain: "parking-d00d7.firebaseapp.com",
+        databaseURL: "https://parking-d00d7.firebaseio.com",
+        projectId: "parking-d00d7",
+        storageBucket: "parking-d00d7.appspot.com",
+        messagingSenderId: "513666767938"
+      };
+      firebase.initializeApp(config);
+    </script>
+		
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">ParkingCha</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href=".html">Finding Spot</a></li>
+						<li><a href=".html">Recent Search</a></li>
+						<li><a href=".html">My Rates</a></li>
+						<li><a href=".html">Account Setting</a></li>
+						<li><a href="index.html">Back home</a></li>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+		
+				
+                <div id="map" class="map"></div>
+
+				<script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: new google.maps.LatLng(24.98959, 121.5742083),
+                mapTypeId: 'roadmap'
+            });
+
+            var infoWindow = new google.maps.InfoWindow({ map: map });
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Location found.');
+                    map.setCenter(pos);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+
+
+            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var icons = {
+                parking: {
+                    icon: iconBase + 'parking_lot_maps.png'
+                },
+                library: {
+                    icon: iconBase + 'library_maps.png'
+                },
+                info: {
+                    icon: iconBase + 'info-i_maps.png'
+                }
+            };
+
+            var features = [
+                {
+                    name: '萬興國小地下停車場',
+                    position: new google.maps.LatLng(24.98959, 121.5742083),
+                    type: 'parking',
+                    link: '"https://www.google.com.tw/maps/place/萬興國小地下停車場"',
+                    money: '20',
+                    number: '12'
+                }, {
+                    name: '永安藝文館停車場',
+                    position: new google.maps.LatLng(24.984454, 121.568988),
+                    type: 'parking',
+                    link: '"https://www.google.com.tw/maps/place/永安藝文館停車場"',
+                    money: '20',
+                    number: '12'
+                }, {
+                    name: '保儀路平面停車場',
+                    position: new google.maps.LatLng(24.984402, 121.565306),
+                    type: 'parking',
+                    link: '"https://www.google.com.tw/maps/place/保儀路平面停車場"',
+                    money: '20',
+                    number: '12'
+                }
+            ];
+
+            var features_temp = [
+                {
+                    name: '佐世保對面',
+                    position: new google.maps.LatLng(24.986759, 121.578794),
+                    type: 'info',
+                    link: '"https://www.google.com.tw/maps/place/萬興國小地下停車場"',
+                }, {
+                    name: '新光路一段-巴東蜀味',
+                    position: new google.maps.LatLng(24.989629, 121.573730),
+                    type: 'info',
+                    link: '"https://www.google.com.tw/maps/place/永安藝文館停車場"',
+                }, {
+                    name: '木新路二段-木柵復活堂門口',
+                    position: new google.maps.LatLng(24.987727, 121.570456),
+                    type: 'info',
+                    link: '"https://www.google.com.tw/maps/place/保儀路平面停車場"',
+                }
+            ];
+
+            // Create markers.
+            features.forEach(function (feature) {
+
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">' + feature.name + '</h1>' +
+                    '<div id="bodyContent">' +
+                    '<p>收費:' + feature.money + '元/小時<br>' +
+                    '剩餘車位:' + feature.number + '個<br>' +
+                    '上次更新:5分鐘前</p>' +
+                    '<a href=' + feature.link + '>開始導航</a>' +
+                    '</div>' +
+                    '</div>';
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            });
+
+            features_temp.forEach(function (feature) {
+
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">' + feature.name + '</h1>' +
+                    '<div id="bodyContent">' +
+                    '上次更新:5分鐘前</p>' +
+                    '<a href=' + feature.link + '>開始導航</a>' +
+                    '</div>' +
+                    '</div>';
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+        }
+    </script>
+    <div id="map"></div>
+    <div>
+        停車場：<br>
+        <input type="text" id="name">
+        <br>
+        位置：<br>
+        <input type="text" id="pos">
+        <br>
+        剩餘停車位：<br>
+        <input type="text" id="num">
+        <br>
+        <button id="btn1">送出</button>
+        <br><br><br>
+        查詢<br>
+        <space>位置：<br>
+        <input type="text" id="search_pos">
+        <button id="btn2">查詢</button>
+        <p id="result">結果：</p>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
+    <script src="db.js"></script>
+</body>
+    
+<div id="id03" class="modal1">
+  <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+  
+  <form class="modal-content animate" action="/action_page.php">
+   <div class="imgcontainer" style="position:relative;top:50px;left:25%">
+      <img src="images/parkingcha_bl.png" height="30%" width="50%">
+     </div>
+    <div class="container">
+     <br /> 
+     
+      <input type="text" placeholder="今天想去哪兒呢？" name="email" required>
+<br /> 
+ 
+      <div class="clearfix">
+         <button type="submit" class="button special" class="btn">找車位囉！</button>
+        
+       
+      </div>
+    </div>
+  </form>
+</div>
+
+				
+			
+
+		<footer id="footer">
+				<div class="container">
+					<section class="links">
+						
+					<div class="row">
+						<div class="8u 12u$(medium)">
+							<ul class="copyright">
+								<li>&copy; ParkingCha. All rights reserved.</li>
+								<li>Design: If Chen</a></li>
+								
+							</ul>
+						</div>
+						<div class="4u$ 12u$(medium)">
+							<ul class="icons">
+								<li>
+									<a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+								</li>
+								<li>
+									<a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+								</li>
+								<li>
+									<a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+								</li>
+								<li>
+									<a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+	</body>
+</html>
