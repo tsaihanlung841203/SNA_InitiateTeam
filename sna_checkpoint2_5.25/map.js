@@ -155,7 +155,8 @@ function initMap() {
             '<p>價格：' + value.fee + '</a>' +
             '<p>車位號碼：' + value.number + '</a><br>' +
             '<img src=' + value.img + ' height="100"><br>' +
-            '<a href=' + value.link + '>開始導航</a>' +
+            '<a href=' + value.link + '>開始導航</a><br>' +
+            '<a id=' + index + ' class="rm">刪除</a>' +
             '</div>' +
             '</div>';
 
@@ -174,12 +175,16 @@ function initMap() {
         });
     })
 
+    $(document).on('click', '.rm', function (e) {
+        remove_private($(this).attr('id'));
+    });
+
     map.addListener('click', function (e) {
         var visible = $('.overlay').is(':visible')
-        if(visible){
+        if (visible) {
             $('.overlay').hide();
         }
-        else{
+        else {
             $('.overlay').show();
             $('#lat').val(e.latLng.lat());
             $('#lng').val(e.latLng.lng());
@@ -187,8 +192,8 @@ function initMap() {
     });
 
 }
-$('#add_private').click(()=>{
-    push_private($('#name').val(), $('#fee').val(), $('#lat').val(), $('#lng').val(), $('#img').val(), $('#number').val(), $('#day option:selected').val() + ' ' + $('#time1').val() + ' ~ ' +  $('#time2').val(), $('#link').val());
+$('#add_private').click(() => {
+    push_private($('#name').val(), $('#fee').val(), $('#lat').val(), $('#lng').val(), $('#img').val(), $('#number').val(), $('#day option:selected').val() + ' ' + $('#time1').val() + ' ~ ' + $('#time2').val(), $('#link').val());
 })
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

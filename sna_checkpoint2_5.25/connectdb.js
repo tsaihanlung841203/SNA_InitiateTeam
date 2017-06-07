@@ -74,3 +74,7 @@ function get_private(callback) {
         $.each(data.val(), callback);
     })
 }
+function remove_private(id){
+    firebase.database().ref('parking_private/' + id).remove();
+    location.reload()
+}
