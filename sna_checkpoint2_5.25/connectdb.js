@@ -44,11 +44,9 @@ function get_temp(callback){
         $.each(data.val(), callback);
     })
 }
-function get_private(){
+function get_private(callback){
     var dbref = firebase.database().ref('parking_private/');
     dbref.once('value',(data)=>{
-        $.each(data.val(), function(index, value) {
-            console.log(value);
-        });
+        $.each(data.val(), callback);
     })
 }
