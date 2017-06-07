@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<head>
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC_jBDA7VOAgMe0W39ydl3ep4KVBRT3LX0",
+    authDomain: "sna-hw3-f0b2a.firebaseapp.com",
+    databaseURL: "https://sna-hw3-f0b2a.firebaseio.com",
+    projectId: "sna-hw3-f0b2a",
+    storageBucket: "sna-hw3-f0b2a.appspot.com",
+    messagingSenderId: "753406577344"
+  };
+  firebase.initializeApp(config);
+</script><script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
+<script>
+  var firebase = require('firebase');
+  var firebaseui = require('firebaseui');
+</script>
+ <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
+
+<script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        callbacks: {
+          signInSuccess: function(currentUser, credential, redirectUrl) {
+            // Do something.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+          },
+          uiShown: function() {
+            // The widget is rendered.
+            // Hide the loader.
+            document.getElementById('loader').style.display = 'none';
+          }
+        },
+        credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+        // Query parameter name for mode.
+        queryParameterForWidgetMode: 'mode',
+        // Query parameter name for sign in success url.
+        queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: 'index.html',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          {
+            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            // Whether the display name should be displayed in the Sign Up page.
+            requireDisplayName: true
+          },
+          
+        ],
+        // Terms of service url.
+        tosUrl: 'https://www.google.com'
+      };
+
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+      
+      
+    </script>
+    </head>
+    <body>
+    	<div align="center">登入方式</div>
+<div id="firebaseui-auth-container"></div>
+
+    </body>
+    
