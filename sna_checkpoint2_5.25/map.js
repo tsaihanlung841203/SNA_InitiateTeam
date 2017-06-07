@@ -142,19 +142,6 @@ function initMap() {
             infowindow.open(map, marker);
         });
     })
-
-
-    var features_privete = [{
-        name: '鼎晟不動產-停車場車位出租-文山行旅',
-        position: new google.maps.LatLng(24.982487, 121.565057),
-        type: 'library',
-        number: '25',
-        time: '禮拜一 10:00~16:00',
-        price: '100元',
-        img: 'https://c1.staticflickr.com/5/4269/35112204186_79c910ed98_z.jpg',
-        link: 'https://www.google.com.tw/maps/place/萬興國小地下停車場'
-    }];
-
     get_private(function (index, value) {
 
         console.log(value);
@@ -194,17 +181,15 @@ function initMap() {
         }
         else{
             $('.overlay').show();
-            $('#lat').text(e.latLng.lat());
-            $('#lng').text(e.latLng.lng());
+            $('#lat').val(e.latLng.lat());
+            $('#lng').val(e.latLng.lng());
         }
     });
 
 }
 
-$('#add_private').click(()=>{
-    //console.log('addmarker')
-    upload($('#file'));
-    //push_private($('#name').text(), $('#fee').text(), $('#lat').text(), $('#lng').text(), $('#file'), $('#number').text(), $('#time').text(), $('#link').text());
+$('#add_private').click(()=>{    
+    push_private($('#name').val(), $('#fee').val(), $('#lat').val(), $('#lng').val(), $('#img').val(), $('#number').val(), $('#time').val(), $('#link').val());
 })
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
