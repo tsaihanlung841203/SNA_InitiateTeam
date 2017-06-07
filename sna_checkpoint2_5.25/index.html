@@ -151,6 +151,7 @@
 				<h1><a href="index.html">ParkingCha</a></h1>
 				<nav id="nav">
 					<ul>
+					    <li><a onclick="document.getElementById('id04').style.display='block',document.getElementById('navPanel').style.display='none'">Sharing Spot</a></li>
 						<li><a href="mapp.html">Finding Spot</a></li>
 						<li><a href=".html">Recent Search</a></li>
 						<li><a href=".html">My Rates</a></li>
@@ -360,6 +361,35 @@
       <div class="clearfix">
          <button type="submit" class="button special" class="signupbtn">Sign Up</button>
          <button type="button" class="button special" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+       
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div id="id04" class="modal">
+  <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content animate" action="/action_page.php">
+   <div class="imgcontainer" style="position:relative;top:50px;left:25%">
+      <img src="images/parkingcha_bl.png" height="30%" width="50%">
+     </div>
+    <div class="container">
+     <br /> 
+     <br /> 
+     <br />  <label><b>Enter Parkinglot name</b></label>
+      <input type="text" placeholder="Enter Parkinglot name" name="name" required>
+<br /> 
+      <label><b>Position</b></label>
+      <input type="text" placeholder="Enter Position" name="position" required>
+<br /> 
+<button class="button special" onclick="document.getElementById('filechooser').style.display='block'" required">Image</button>
+      <input type="file" id="filechooser" >
+      
+     <br /> 
+      <div class="clearfix">
+         <button type="submit" class="button special" class="signupbtn">Share Position</button>
+         <button type="button" class="button special" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button>
        
       </div>
     </div>

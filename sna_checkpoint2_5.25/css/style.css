@@ -253,7 +253,7 @@
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #383b43;
+			border-color: #000000w;
 			box-shadow: 0 0 0 1px #383b43;
 		}
 
@@ -449,7 +449,7 @@
 		}
 
 		.icon.rounded {
-			background-color: #383b43;
+			background-color: #000000;
 			border-radius: 100%;
 			color: #ffffff;
 			display: inline-block;
@@ -1120,7 +1120,7 @@
 			}
 
 		.wrapper.style3 {
-			background-color: #3cadd4;
+			background-color: #000000;
 			color: #ffffff;
 		}
 
