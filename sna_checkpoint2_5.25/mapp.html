@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
     <script>
@@ -75,18 +75,36 @@
             <label class="control-label" style="color:black">號碼</label>
             <input type="text" id="number" class="form-control"><br>
             <label class="control-label" style="color:black">時間</label>
-            <input type="text" id="time" class="form-control"><br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <select type="text" id="day" class="form-control">
+                        <option>星期一</option>
+                        <option>星期二</option>
+                        <option>星期三</option>
+                        <option>星期四</option>
+                        <option>星期五</option>
+                        <option>星期六</option>
+                        <option>星期天</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <input type="time" id="time1" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <input type="time" id="time2" class="form-control">
+                </div>
+            </div>
             <label class="control-label" style="color:black">連結</label>
             <input type="text" id="link" class="form-control"><br>
             <label class="control-label" style="color:black">上傳圖片</label>
             <input type="file" id="file" class="file" accept="image/*"><br>
-            <input type="hidden" id="lat" class="form-control" ><input type="hidden" id="lng" class="form-control" >
-            <input type="hidden" id="img" class="form-control" >
+            <input type="hidden" id="lat" class="form-control"><input type="hidden" id="lng" class="form-control">
+            <input type="hidden" id="img" class="form-control">
             <button class="btn btn-success" id="add_private">送出</button><br>
         </form>
     </div>
     <div id="map"></div>
-    
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
     <script src="connectdb.js"></script>
     <script src="map.js"></script>

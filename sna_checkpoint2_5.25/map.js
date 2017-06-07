@@ -187,9 +187,8 @@ function initMap() {
     });
 
 }
-
-$('#add_private').click(()=>{    
-    push_private($('#name').val(), $('#fee').val(), $('#lat').val(), $('#lng').val(), $('#img').val(), $('#number').val(), $('#time').val(), $('#link').val());
+$('#add_private').click(()=>{
+    push_private($('#name').val(), $('#fee').val(), $('#lat').val(), $('#lng').val(), $('#img').val(), $('#number').val(), $('#day option:selected').val() + ' ' + $('#time1').val() + ' ~ ' +  $('#time2').val(), $('#link').val());
 })
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
