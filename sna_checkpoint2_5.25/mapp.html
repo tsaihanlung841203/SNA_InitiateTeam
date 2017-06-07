@@ -1,81 +1,77 @@
 <!DOCTYPE html>
-<!--
-	Transit by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>ParkingCha 樂停車</title>
-		
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-        <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
 
-        #map {
-            height: 100%;
+<head>
+    <meta charset="UTF-8">
+    <title>ParkingCha 樂停車</title>
 
-html,
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <style>
+
+        html,
         body {
-            height: 100%;
+            height: 40rem;
             margin: 0;
             padding: 0;
         }
-        /* Optional: Makes the sample page fill the window. */
-
-       
+        #map {
+            height: 40rem;
+        }
     </style>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-        <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDZ-Cj8xnOH6Ljc9p7Mv2NyNBz5q_Zk6I0",
-        authDomain: "parking-d00d7.firebaseapp.com",
-        databaseURL: "https://parking-d00d7.firebaseio.com",
-        projectId: "parking-d00d7",
-        storageBucket: "parking-d00d7.appspot.com",
-        messagingSenderId: "513666767938"
-      };
-      firebase.initializeApp(config);
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDZ-Cj8xnOH6Ljc9p7Mv2NyNBz5q_Zk6I0",
+            authDomain: "parking-d00d7.firebaseapp.com",
+            databaseURL: "https://parking-d00d7.firebaseio.com",
+            projectId: "parking-d00d7",
+            storageBucket: "parking-d00d7.appspot.com",
+            messagingSenderId: "513666767938"
+        };
+        firebase.initializeApp(config);
     </script>
-		
-	</head>
-	<body>
 
-		<!-- Header -->
-			<header id="header">
-				<h1><a href="index.html">ParkingCha</a></h1>
-				<nav id="nav">
-					<ul>
-						<li><a href=".html">Finding Spot</a></li>
-						<li><a href=".html">Recent Search</a></li>
-						<li><a href=".html">My Rates</a></li>
-						<li><a href=".html">Account Setting</a></li>
-						<li><a href="index.html">Back home</a></li>
-						</li>
-					</ul>
-				</nav>
-			</header>
+</head>
 
-		<!-- Main -->
-		
-				
-                <div id="map" class="map"></div>
+<body>
 
-				<script>
+    <!-- Header -->
+<!--
+    <header id="header">
+        <h1><a href="index.html">ParkingCha</a></h1>
+        <nav id="nav">
+            <ul>
+                <li><a href=".html">Finding Spot</a></li>
+                <li><a href=".html">Recent Search</a></li>
+                <li><a href=".html">My Rates</a></li>
+                <li><a href=".html">Account Setting</a></li>
+                <li><a href="index.html">Back home</a></li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+-->
+    <!-- Main -->
+    <div id="map"></div>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
+    <script src="db.js"></script>
+    <script>
         var map;
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -119,7 +115,7 @@ html,
                 }
             };
 
-            var features = [
+            var features_public = [
                 {
                     name: '萬興國小地下停車場',
                     position: new google.maps.LatLng(24.98959, 121.5742083),
@@ -163,8 +159,21 @@ html,
                 }
             ];
 
+            var features_privete = [
+                {
+                    name: '鼎晟不動產-停車場車位出租-文山行旅',
+                    position: new google.maps.LatLng(24.982487, 121.565057),
+                    type: 'library',
+                    number: '25',
+                    time: '禮拜一 10:00~16:00',
+                    price: '100元',
+                    img: 'https://c1.staticflickr.com/5/4269/35112204186_79c910ed98_z.jpg',
+                    link: 'https://www.google.com.tw/maps/place/萬興國小地下停車場'
+                }
+            ];
+
             // Create markers.
-            features.forEach(function (feature) {
+            features_public.forEach(function (feature) {
 
                 var contentString = '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -221,6 +230,38 @@ html,
                     infowindow.open(map, marker);
                 });
             });
+
+            features_privete.forEach(function (feature) {
+
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                        '<h1 id="firstHeading" class="firstHeading">' + feature.name + '</h1>' +
+                    '</div>' +
+                    '<div id="bodyContent">' +
+                        '<p>時段：' + feature.time + '</a>' +
+                        '<p>價格：' + feature.price + '</a>' +
+                        '<p>車位號碼：' + feature.number + '</a><br>' +
+                        '<img src=' + feature.img + ' height="100"><br>' +
+                        '<a href=' + feature.link + '>開始導航</a>' +
+                    '</div>' +
+                    '</div>';
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            });
+
         }
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             infoWindow.setPosition(pos);
@@ -229,84 +270,7 @@ html,
                 'Error: Your browser doesn\'t support geolocation.');
         }
     </script>
-    <div id="map"></div>
-    <div>
-        停車場：<br>
-        <input type="text" id="name">
-        <br>
-        位置：<br>
-        <input type="text" id="pos">
-        <br>
-        剩餘停車位：<br>
-        <input type="text" id="num">
-        <br>
-        <button id="btn1">送出</button>
-        <br><br><br>
-        查詢<br>
-        <space>位置：<br>
-        <input type="text" id="search_pos">
-        <button id="btn2">查詢</button>
-        <p id="result">結果：</p>
-    </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
-    <script src="db.js"></script>
+
 </body>
-    
-<div id="id03" class="modal1">
-  <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-  
-  <form class="modal-content animate" action="/action_page.php">
-   <div class="imgcontainer" style="position:relative;top:50px;left:25%">
-      <img src="images/parkingcha_bl.png" height="30%" width="50%">
-     </div>
-    <div class="container">
-     <br /> 
-     
-      <input type="text" placeholder="今天想去哪兒呢？" name="email" required>
-<br /> 
- 
-      <div class="clearfix">
-         <button type="submit" class="button special" class="btn">找車位囉！</button>
-        
-       
-      </div>
-    </div>
-  </form>
-</div>
 
-				
-			
-
-		<footer id="footer">
-				<div class="container">
-					<section class="links">
-						
-					<div class="row">
-						<div class="8u 12u$(medium)">
-							<ul class="copyright">
-								<li>&copy; ParkingCha. All rights reserved.</li>
-								<li>Design: If Chen</a></li>
-								
-							</ul>
-						</div>
-						<div class="4u$ 12u$(medium)">
-							<ul class="icons">
-								<li>
-									<a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
-								</li>
-								<li>
-									<a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
-								</li>
-								<li>
-									<a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
-								</li>
-								<li>
-									<a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-	</body>
 </html>
