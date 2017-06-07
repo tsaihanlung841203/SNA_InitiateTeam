@@ -30,8 +30,11 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/style-xlarge.css" />
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -47,7 +50,6 @@
 </head>
 
 <body>
-
     <!-- Header -->
     <header id="header">
         <h1><a href="index.html">ParkingCha</a></h1>
@@ -64,11 +66,28 @@
     </header>
 
     <!-- Main -->
+    <div class="overlay" style="background-color:white; text-align:center;  position:absolute; z-index:10000; opacity:0.8;">
+        <form>
+            <label class="control-label" style="color:black">名稱</label>
+            <input type="text" id="name" class="form-control"><br>
+            <label class="control-label" style="color:black">租金</label>
+            <input type="text" id="fee" class="form-control"><br>
+            <label class="control-label" style="color:black">號碼</label>
+            <input type="text" id="number" class="form-control"><br>
+            <label class="control-label" style="color:black">時間</label>
+            <input type="text" id="time" class="form-control"><br>
+            <label class="control-label" style="color:black">連結</label>
+            <input type="text" id="link" class="form-control"><br>
+            <label class="control-label" style="color:black">上傳圖片</label>
+            <input type="file" id="file" class="file" accept="image/*"><br>
+            <input type="hidden" id="lat" class="form-control" ><input type="hidden" id="lng" class="form-control" >
+            <button class="btn btn-success" id="add_private">送出</button><br>
+        </form>
+    </div>
     <div id="map"></div>
-
+    
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
     <script src="connectdb.js"></script>
-    <script src="db.js"></script>
     <script src="map.js"></script>
 
 </body>
