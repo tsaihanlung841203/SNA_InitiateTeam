@@ -38,12 +38,10 @@ function get_user(){
         });
     })
 }
-function get_temp(){
+function get_temp(callback){
     var dbref = firebase.database().ref('parking_temp/');
     dbref.once('value',(data)=>{
-        $.each(data.val(), function(index, value) {
-            console.log(value);
-        });
+        $.each(data.val(), callback);
     })
 }
 function get_private(){

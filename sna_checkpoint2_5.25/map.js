@@ -108,25 +108,6 @@ function initMap() {
         }
     ];
     */
-    var features_temp = [
-        {
-            name: '佐世保對面',
-            position: new google.maps.LatLng(24.986759, 121.578794),
-            type: 'info',
-            link: '"https://www.google.com.tw/maps/place/萬興國小地下停車場"',
-        }, {
-            name: '新光路一段-巴東蜀味',
-            position: new google.maps.LatLng(24.989629, 121.573730),
-            type: 'info',
-            link: '"https://www.google.com.tw/maps/place/永安藝文館停車場"',
-        }, {
-            name: '木新路二段-木柵復活堂門口',
-            position: new google.maps.LatLng(24.987727, 121.570456),
-            type: 'info',
-            link: '"https://www.google.com.tw/maps/place/保儀路平面停車場"',
-        }
-    ];
-
     var features_privete = [
         {
             name: '鼎晟不動產-停車場車位出租-文山行旅',
@@ -172,66 +153,45 @@ function initMap() {
         });
     };
 
-    features_temp.forEach(function (feature) {
+    get_temp(function (index, value) {
 
-        var contentString = '<div id="content">' +
-            '<div id="siteNotice">' +
-            '</div>' +
-            '<h1 id="firstHeading" class="firstHeading">' + feature.name + '</h1>' +
-            '<div id="bodyContent">' +
-            '上次更新:5分鐘前</p>' +
-            '<a href=' + feature.link + '>開始導航</a>' +
-            '</div>' +
-            '</div>';
-
+        console.log(value);
 
         let infowindow = new google.maps.InfoWindow({
-            content: contentString
+            content: value.content
         });
 
         let marker = new google.maps.Marker({
-            position: feature.position,
-            icon: icons[feature.type].icon,
+            position: new google.maps.LatLng(value.lat, value.lng),
+            icon: value.icon,
             map: map
         });
 
         marker.addListener('click', function () {
             infowindow.open(map, marker);
         });
-    });
+    })
 
-    features_privete.forEach(function (feature) {
+    get_private(function (index, value) {
 
-        var contentString = '<div id="content">' +
-            '<div id="siteNotice">' +
-            '<h1 id="firstHeading" class="firstHeading">' + feature.name + '</h1>' +
-            '</div>' +
-            '<div id="bodyContent">' +
-            '<p>時段：' + feature.time + '</a>' +
-            '<p>價格：' + feature.price + '</a>' +
-            '<p>車位號碼：' + feature.number + '</a><br>' +
-            '<img src=' + feature.img + ' height="100"><br>' +
-            '<a href=' + feature.link + '>開始導航</a>' +
-            '</div>' +
-            '</div>';
-
+        console.log(value);
 
         let infowindow = new google.maps.InfoWindow({
-            content: contentString
+            content: value.content
         });
 
         let marker = new google.maps.Marker({
-            position: feature.position,
-            icon: icons[feature.type].icon,
+            position: new google.maps.LatLng(value.lat, value.lng),
+            icon: value.icon,
             map: map
         });
 
         marker.addListener('click', function () {
             infowindow.open(map, marker);
         });
-    });
-
+    })
 }
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?

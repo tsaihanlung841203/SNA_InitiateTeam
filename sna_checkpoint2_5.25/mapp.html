@@ -15,6 +15,7 @@
             margin: 0;
             padding: 0;
         }
+
         #map {
             height: 40rem;
         }
@@ -31,20 +32,18 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyDZ-Cj8xnOH6Ljc9p7Mv2NyNBz5q_Zk6I0",
-            authDomain: "parking-d00d7.firebaseapp.com",
-            databaseURL: "https://parking-d00d7.firebaseio.com",
-            projectId: "parking-d00d7",
-            storageBucket: "parking-d00d7.appspot.com",
-            messagingSenderId: "513666767938"
+            apiKey: "AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
+            authDomain: "parkingcha-25963.firebaseapp.com",
+            databaseURL: "https://parkingcha-25963.firebaseio.com",
+            projectId: "parkingcha-25963",
+            storageBucket: "parkingcha-25963.appspot.com",
+            messagingSenderId: "991353312639"
         };
         firebase.initializeApp(config);
     </script>
-
 </head>
 
 <body>
@@ -68,6 +67,7 @@
     <div id="map"></div>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
+    <script src="connectdb.js"></script>
     <script src="db.js"></script>
     <script src="map.js"></script>
 
