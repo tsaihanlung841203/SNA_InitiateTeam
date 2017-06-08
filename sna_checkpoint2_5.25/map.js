@@ -125,11 +125,19 @@ function initMap() {
     };
 
     get_temp(function (index, value) {
-
         console.log(value);
-
+        var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">' + value.name + '</h1>' +
+                    '<img src=' + value.img + ' height="100"><br>' +
+                    '<div id="bodyContent">' +
+                    '上次更新:5分鐘前</p>' +
+                    '<a href=' + value.link + '>開始導航</a>' +
+                    '</div>' +
+                    '</div>';
         let infowindow = new google.maps.InfoWindow({
-            content: value.content
+            content: contentString
         });
 
         let marker = new google.maps.Marker({
@@ -188,12 +196,17 @@ function initMap() {
             $('.overlay').show();
             $('#lat').val(e.latLng.lat());
             $('#lng').val(e.latLng.lng());
+            $('#lat_temp').val(e.latLng.lat());
+            $('#lng_temp').val(e.latLng.lng());
         }
     });
 
 }
 $('#add_private').click(() => {
     push_private($('#name').val(), $('#fee').val(), $('#lat').val(), $('#lng').val(), $('#img').val(), $('#number').val(), $('#day option:selected').val() + ' ' + $('#time1').val() + ' ~ ' + $('#time2').val(), $('#link').val());
+})
+$('#add_temp').click(() => {
+    push_temp($('#name_temp').val(), $('#lat_temp').val(), $('#lng_temp').val(), $('#img_temp').val(), $('#link_temp').val());
 })
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

@@ -38,12 +38,12 @@
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
-            authDomain: "parkingcha-25963.firebaseapp.com",
-            databaseURL: "https://parkingcha-25963.firebaseio.com",
-            projectId: "parkingcha-25963",
-            storageBucket: "parkingcha-25963.appspot.com",
-            messagingSenderId: "991353312639"
+            apiKey:"AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
+            authDomain:"parkingcha-25963.firebaseapp.com",
+            databaseURL:"https://parkingcha-25963.firebaseio.com",
+            projectId:"parkingcha-25963",
+            storageBucket:"parkingcha-25963.appspot.com",
+            messagingSenderId:"991353312639"
         };
         firebase.initializeApp(config);
     </script>
@@ -66,18 +66,25 @@
     </header>
 
     <!-- Main -->
-    <div class="overlay" style="background-color:white; text-align:center;  position:absolute; z-index:10000; opacity:0.8;">
-        <form>
-            <label class="control-label" style="color:black">名稱</label>
-            <input type="text" id="name" class="form-control"><br>
-            <label class="control-label" style="color:black">租金</label>
-            <input type="text" id="fee" class="form-control"><br>
-            <label class="control-label" style="color:black">號碼</label>
-            <input type="text" id="number" class="form-control"><br>
-            <label class="control-label" style="color:black">時間</label>
-            <div class="row">
-                <div class="col-sm-4">
-                    <select type="text" id="day" class="form-control">
+    <div class="overlay" style="background-color:white; text-align:center; position:absolute; z-index:10000; opacity:0.8;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#private">個人租車</a></li>
+            <li><a data-toggle="tab" href="#temp">臨時停車</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="private" class="tab-pane fade in active">
+                <form>
+                    <label class="control-label" style="color:black">名稱</label>
+                    <input type="text" id="name" class="form-control"><br>
+                    <label class="control-label" style="color:black">租金</label>
+                    <input type="text" id="fee" class="form-control"><br>
+                    <label class="control-label" style="color:black">號碼</label>
+                    <input type="text" id="number" class="form-control"><br>
+                    <label class="control-label" style="color:black">時間</label>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <select type="text" id="day" class="form-control">
                         <option>星期一</option>
                         <option>星期二</option>
                         <option>星期三</option>
@@ -86,22 +93,39 @@
                         <option>星期六</option>
                         <option>星期天</option>
                     </select>
-                </div>
-                <div class="col-sm-4">
-                    <input type="time" id="time1" class="form-control">
-                </div>
-                <div class="col-sm-4">
-                    <input type="time" id="time2" class="form-control">
-                </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="time" id="time1" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="time" id="time2" class="form-control">
+                        </div>
+                    </div>
+                    <label class="control-label" style="color:black">連結</label>
+                    <input type="text" id="link" class="form-control"><br>
+                    <label class="control-label" style="color:black">上傳圖片</label>
+                    <input type="file" id="file" class="file" accept="image/*"><br>
+                    <input type="hidden" id="lat" class="form-control"><input type="hidden" id="lng" class="form-control">
+                    <input type="hidden" id="img" class="form-control">
+                    <button class="btn btn-success" id="add_private">送出</button><br>
+                </form>
             </div>
-            <label class="control-label" style="color:black">連結</label>
-            <input type="text" id="link" class="form-control"><br>
-            <label class="control-label" style="color:black">上傳圖片</label>
-            <input type="file" id="file" class="file" accept="image/*"><br>
-            <input type="hidden" id="lat" class="form-control"><input type="hidden" id="lng" class="form-control">
-            <input type="hidden" id="img" class="form-control">
-            <button class="btn btn-success" id="add_private">送出</button><br>
-        </form>
+            <div id="temp" class="tab-pane fade">
+                <form>
+                    <label class="control-label" style="color:black">名稱</label>
+                    <input type="text" id="name_temp" class="form-control"><br>
+                    <label class="control-label" style="color:black">連結</label>
+                    <input type="text" id="link_temp" class="form-control"><br>
+                    <label class="control-label" style="color:black">上傳圖片</label>
+                    <input type="file" id="file_temp" class="file" accept="image/*"><br>
+                    <input type="hidden" id="lat_temp" class="form-control"><input type="hidden" id="lng_temp" class="form-control">
+                    <input type="hidden" id="img_temp" class="form-control">
+                    <button class="btn btn-success" id="add_temp">送出</button><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
     </div>
     <div id="map"></div>
 

@@ -13,6 +13,7 @@ function upload(evt) {
         var publicRef = firebase.storage().ref().child('public/' + file.name);
         publicRef.getDownloadURL().then((url) => {
             $('#img').val(url);
+            $('#img_temp').val(url);
             $('button').prop('disabled', false);
         })
     }).catch((err) => {
@@ -22,6 +23,7 @@ function upload(evt) {
 }
 window.addEventListener('load', () => {
     document.getElementById('file').addEventListener('change', upload)
+    document.getElementById('file_temp').addEventListener('change', upload)
 })
 
 function push_user(name, account, pwd) {
@@ -31,13 +33,13 @@ function push_user(name, account, pwd) {
         pwd: pwd
     }).key;
 }
-function push_temp(name, lat, lng, link) {
+function push_temp(name, lat, lng, img, link) {
     var key = firebase.database().ref('parking_temp/').push({
         name: name,
         lat: lat,
         lng: lng,
         icon: "https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png",
-        content: content,
+        img : img,
         link: link
     }).key;
 }
