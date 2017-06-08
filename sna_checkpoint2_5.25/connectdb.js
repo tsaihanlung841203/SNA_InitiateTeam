@@ -80,3 +80,7 @@ function remove_private(id){
     firebase.database().ref('parking_private/' + id).remove();
     location.reload()
 }
+function remove_temp(id){
+    firebase.database().ref('parking_temp/' + id).remove();
+    location.reload()
+}

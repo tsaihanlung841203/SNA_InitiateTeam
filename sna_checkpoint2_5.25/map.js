@@ -133,7 +133,8 @@ function initMap() {
                     '<img src=' + value.img + ' height="100"><br>' +
                     '<div id="bodyContent">' +
                     '上次更新:5分鐘前</p>' +
-                    '<a href=' + value.link + '>開始導航</a>' +
+                    '<a href=' + value.link + '>開始導航</a><br>' +
+                    '<a id=' + index + ' class="rm_temp">刪除</a>' +
                     '</div>' +
                     '</div>';
         let infowindow = new google.maps.InfoWindow({
@@ -148,6 +149,10 @@ function initMap() {
 
         marker.addListener('click', function () {
             infowindow.open(map, marker);
+        });
+
+        $(document).on('click', '.rm_temp', function (e) {
+            remove_temp($(this).attr('id'));
         });
     })
     get_private(function (index, value) {
@@ -164,7 +169,7 @@ function initMap() {
             '<p>車位號碼：' + value.number + '</a><br>' +
             '<img src=' + value.img + ' height="100"><br>' +
             '<a href=' + value.link + '>開始導航</a><br>' +
-            '<a id=' + index + ' class="rm">刪除</a>' +
+            '<a id=' + index + ' class="rm_private">刪除</a>' +
             '</div>' +
             '</div>';
 
@@ -183,7 +188,7 @@ function initMap() {
         });
     })
 
-    $(document).on('click', '.rm', function (e) {
+    $(document).on('click', '.rm_private', function (e) {
         remove_private($(this).attr('id'));
     });
 
