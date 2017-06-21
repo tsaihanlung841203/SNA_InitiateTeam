@@ -135,8 +135,7 @@ function initMap() {
             point = 0;
         }
         else {
-            point = value.star / value.people;
-            point.toFixed(1);
+            point = (value.star / value.people).toFixed(1);
         }
         var contentString = '<div id="content">' +
             '<div id="siteNotice">' +
