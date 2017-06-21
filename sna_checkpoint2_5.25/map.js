@@ -130,11 +130,19 @@ function initMap() {
 
     get_temp(function (index, value) {
         console.log(value);
-
+        var point;
+        if (value.people == 0) {
+            point = 0;
+        }
+        else {
+            point = value.star / value.people;
+            point.toFixed(1);
+        }
         var contentString = '<div id="content">' +
             '<div id="siteNotice">' +
             '</div>' +
             '<h1 id="firstHeading" class="firstHeading">' + value.name + '</h1>' +
+            '<p id="point">' + point +' 分</p><br>'+
             '<img src=' + value.img + ' height="100"><br>' +
             '<div id="bodyContent">' +
             '上次更新:5分鐘前</p>' +
@@ -153,6 +161,7 @@ function initMap() {
         });
         google.maps.event.addListener(marker, 'click', (function (marker) {
             return function () {
+                
                 infowindow.setContent(contentString);
                 infowindow.open(map, marker);
                 infowindow.opened = true;
@@ -172,16 +181,14 @@ function initMap() {
                         link: value.link,
                         star: value.star + rating,
                         people: value.people + 1
-                    };
-                    
-                    return firebase.database().ref('parking_temp/'+index+'/').update(updates);
+                    }
+                    firebase.database().ref('parking_temp/'+index+'/').update(updates);
+                    location.reload();
                 };
                 // rating instance
                 var myRating = rating(el, currentRating, maxRating, callback);
             }
         })(marker));
-
-
 
         $(document).on('click', '.rm_temp', function (e) {
             remove_temp($(this).attr('id'));

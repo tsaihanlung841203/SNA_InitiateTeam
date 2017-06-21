@@ -31,7 +31,7 @@ function push_user(name, uid) {
         name: name
     }).key;
 }
-function push_temp(name, lat, lng, img, link, people, star) {
+function push_temp(name, lat, lng, img, link) {
     var key = firebase.database().ref('parking_temp/').push({
         name: name,
         lat: lat,
@@ -39,8 +39,8 @@ function push_temp(name, lat, lng, img, link, people, star) {
         icon: "https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png",
         img : img,
         link: link,
-        people: people,
-        star: star
+        people: 0,
+        star: 0
     }).key;
 }
 function push_private(name, fee, lat, lng, img, number, time, link) {
