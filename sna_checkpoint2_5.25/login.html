@@ -1,125 +1,116 @@
 <!DOCTYPE>
+<html>
+
 <head>
-<meta charset="UTF-8">
-    <title>ParkingCha 樂停車</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>
-    <script src="js/init.js"></script>
-    <noscript>
-      <link rel="stylesheet" href="css/skel.css" />
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-xlarge.css" />
-    </noscript>
-<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+  <meta charset="UTF-8">
+  <title>ParkingCha 樂停車</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/skel-layers.min.js"></script>
+  <script src="js/init.js"></script>
 
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC_jBDA7VOAgMe0W39ydl3ep4KVBRT3LX0",
-    authDomain: "sna-hw3-f0b2a.firebaseapp.com",
-    databaseURL: "https://sna-hw3-f0b2a.firebaseio.com",
-    projectId: "sna-hw3-f0b2a",
-    storageBucket: "sna-hw3-f0b2a.appspot.com",
-    messagingSenderId: "753406577344"
-  };
-  firebase.initializeApp(config);
-</script><script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
-<script>
-  var firebase = require('firebase');
-  var firebaseui = require('firebaseui');
-</script>
- <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
+  <link rel="stylesheet" href="css/skel.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style-xlarge.css" />
 
-<script type="text/javascript">
-      // FirebaseUI config.
-      var uiConfig = {
-        callbacks: {
-          signInSuccess: function(currentUser, credential, redirectUrl) {
-            // Do something.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-          },
-          uiShown: function() {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-          }
-        },
-        credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
-        // Query parameter name for mode.
-        queryParameterForWidgetMode: 'mode',
-        // Query parameter name for sign in success url.
-        queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
-        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-        signInFlow: 'popup',
-        signInSuccessUrl: 'index.html',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-          {
-            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            // Whether the display name should be displayed in the Sign Up page.
-            requireDisplayName: true
-          },
-          
-        ],
-        // Terms of service url.
-        tosUrl: 'https://www.google.com'
-      };
+  <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-      
-      
-    </script>
-    </head>
-    <body>
-          <header id="header">
-        <h1><a href="index.html">ParkingCha</a></h1>
-        <nav id="nav">
-          <ul>
-            <li><a href="mapp.html">Finding Spot</a></li>
-            <li><a href=".html">Recent Search</a></li>
-            <li><a href=".html">My Rates</a></li>
-            <li><a href=".html">Account Setting</a></li>
-            <li><a href="index.html">Back home</a></li>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <section id="main" class="wrapper">
-        <div class="container">
-    	<div align="center">登入方式</div>
-<div id="firebaseui-auth-container"></div>
-  </div>
-      </section>
-      <footer id="footer">
-        <div class="container">
-          <section class="links">
-            
-          <div class="row">
-            <div class="8u 12u$(medium)">
-              <ul class="copyright">
-                <li>&copy; ParkingCha. All rights reserved.</li>
-                <li>Design: If Chen</a></li>
-                
-              </ul>
-            </div>
-            
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
+      authDomain: "parkingcha-25963.firebaseapp.com",
+      databaseURL: "https://parkingcha-25963.firebaseio.com",
+      projectId: "parkingcha-25963",
+      storageBucket: "parkingcha-25963.appspot.com",
+      messagingSenderId: "991353312639"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
+</head>
+
+<body>
+  <header id="header">
+    <h1><a href="index.html">ParkingCha</a></h1>
+    <nav id="nav">
+      <ul>
+        <li><a href="mapp.html">Finding Spot</a></li>
+        <li><a href=".html">Recent Search</a></li>
+        <li><a href=".html">My Rates</a></li>
+        <li><a href=".html">Account Setting</a></li>
+        <li><a href="index.html">Back home</a></li>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section id="main" class="wrapper">
+    <div class="container">
+      <div align="center">登入方式</div>
+      <div id="firebaseui-auth-container"></div>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="container">
+      <section class="links">
+        <div class="row">
+          <div class="8u 12u$(medium)">
+            <ul class="copyright">
+              <li>&copy; ParkingCha. All rights reserved.</li>
+              <li>Design: If Chen</li>
+            </ul>
           </div>
         </div>
-      </footer>
+      </section>
+    </div>
+  </footer>
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      callbacks: {
+        signInSuccess: function (currentUser, credential, redirectUrl) {
+          // Do something.
+          // Return type determines whether we continue the redirect automatically
+          // or whether we leave that to developer to handle.
+          return true;
+        },
+        uiShown: function () {
+          // The widget is rendered.
+          // Hide the loader.
+        }
+      },
+      credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+      // Query parameter name for mode.
+      queryParameterForWidgetMode: 'mode',
+      // Query parameter name for sign in success url.
+      queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
+      // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+      signInFlow: 'popup',
+      signInSuccessUrl: 'index.html',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          // Whether the display name should be displayed in the Sign Up page.
+          requireDisplayName: true
+        },
 
-    </body>
-    
+      ],
+      // Terms of service url.
+      tosUrl: 'https://www.google.com'
+    };
+
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+</body>
+
+</html>

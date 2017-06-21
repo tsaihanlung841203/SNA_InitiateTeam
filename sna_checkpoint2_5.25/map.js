@@ -162,7 +162,20 @@ function initMap() {
                 // max rating, i.e. number of stars you want
                 var maxRating = 5;
                 // callback to run after setting the rating
-                var callback = function (rating) { alert(rating); };
+                var callback = function (rating) { 
+                    var updates = {
+                        name: value.name,
+                        lat: value.lat,
+                        lng: value.lng,
+                        icon: "https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png",
+                        img: value.img,
+                        link: value.link,
+                        star: value.star + rating,
+                        people: value.people + 1
+                    };
+                    
+                    return firebase.database().ref('parking_temp/'+index+'/').update(updates);
+                };
                 // rating instance
                 var myRating = rating(el, currentRating, maxRating, callback);
             }

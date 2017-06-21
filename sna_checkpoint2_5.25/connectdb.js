@@ -26,21 +26,21 @@ window.addEventListener('load', () => {
     document.getElementById('file_temp').addEventListener('change', upload)
 })
 
-function push_user(name, account, pwd) {
-    var key = firebase.database().ref('user/').push({
-        name: name,
-        account: account,
-        pwd: pwd
+function push_user(name, uid) {
+    var key = firebase.database().ref('user/' + uid).push({
+        name: name
     }).key;
 }
-function push_temp(name, lat, lng, img, link) {
+function push_temp(name, lat, lng, img, link, people, star) {
     var key = firebase.database().ref('parking_temp/').push({
         name: name,
         lat: lat,
         lng: lng,
         icon: "https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png",
         img : img,
-        link: link
+        link: link,
+        people: people,
+        star: star
     }).key;
 }
 function push_private(name, fee, lat, lng, img, number, time, link) {
@@ -56,12 +56,10 @@ function push_private(name, fee, lat, lng, img, number, time, link) {
         link: link
     }).key;
 }
-function get_user() {
-    var dbref = firebase.database().ref('user/');
-    dbref.once('value', (data) => {
-        $.each(data.val(), function (index, value) {
-            console.log(value);
-        });
+function get_user(uid,callback) {
+    var dbref = firebase.database().ref('user/'+uid+'/');
+    dbref.once('value', (data) =>{
+        console.log(data.val(),callback);
     })
 }
 function get_temp(callback) {

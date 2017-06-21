@@ -5,528 +5,231 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html lang="zh-Hans-TW ">
-	<head>
-		<meta charset="UTF-8">
-		<title>ParkingCha 樂停車</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-		
-<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC_jBDA7VOAgMe0W39ydl3ep4KVBRT3LX0",
-    authDomain: "sna-hw3-f0b2a.firebaseapp.com",
-    databaseURL: "https://sna-hw3-f0b2a.firebaseio.com",
-    projectId: "sna-hw3-f0b2a",
-    storageBucket: "sna-hw3-f0b2a.appspot.com",
-    messagingSenderId: "753406577344"
-  };
-  firebase.initializeApp(config);
-</script><script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
-<script>
-  var firebase = require('firebase');
-  var firebaseui = require('firebaseui');
-</script>
- <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
-
-<script type="text/javascript">
-      // FirebaseUI config.
-      var uiConfig = {
-        callbacks: {
-          signInSuccess: function(currentUser, credential, redirectUrl) {
-            // Do something.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-          },
-          uiShown: function() {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-          }
-        },
-        credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
-        // Query parameter name for mode.
-        queryParameterForWidgetMode: 'mode',
-        // Query parameter name for sign in success url.
-        queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
-        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-        signInFlow: 'popup',
-        signInSuccessUrl: 'index.html',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-          {
-            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            // Whether the display name should be displayed in the Sign Up page.
-            requireDisplayName: true
-          },
-          
-        ],
-        // Terms of service url.
-        tosUrl: 'https://www.google.com'
+	 <head>
+    <meta charset="UTF-8">
+    <title>ParkingCha 樂停車</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="css/user.css">
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
+        authDomain: "parkingcha-25963.firebaseapp.com",
+        databaseURL: "https://parkingcha-25963.firebaseio.com",
+        projectId: "parkingcha-25963",
+        storageBucket: "parkingcha-25963.appspot.com",
+        messagingSenderId: "991353312639"
       };
-
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-      
-      
+      firebase.initializeApp(config);
     </script>
-<script type="text/javascript">
-    
-    /* $(#logbutton).unbind('click').click(function(){
 
-          firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                    
-                console.log("User is logined", user);
-                firebase.auth().signOut();
-                alert("sign out");
-                //break;
-             } else{
-              alert("sign in");
-              document.getElementById('id01').style.display='block',document.getElementById('navPanel').style.display='none';
-              
-             // break;
-             //continue;
-              
-            }
-          })
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
 
-      });
-    */
-      Loginfun = function(){
-              //alert("sign in");
-              document.getElementById('id01').style.display='block',document.getElementById('navPanel').style.display='none';
-          
-      }
-      Logoutfun = function(){
-          alert("sign out");
-            firebase.auth().signOut();
-            document.getElementById('sign-in-status').textContent = '';
-      }
-        
-      initApp = function() {
-
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            // User is signed in.
-            document.getElementById('logoutbutton').textContent = 'Sign out';
-            document.getElementById('loginbutton').textContent = '';
-            console.log("User is logined",user);
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var phoneNumber = user.phoneNumber;
-            var providerData = user.providerData;
-            user.getToken().then(function(accessToken) {
-              document.getElementById('sign-in-status').textContent = displayName;
-              document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  ');
-            });
-          } else {
-            // User is signed out.
-            document.getElementById('logoutbutton').textContent = '';
-            document.getElementById('loginbutton').textContent = 'Login';
-           // document.getElementById('sign-in-status').textContent = 'Signed out';
-            document.getElementById('sign-in').textContent = 'Sign in';
-            document.getElementById('account-details').textContent = 'null';
-          }
-        }, function(error) {
-          console.log(error);
-        });
-      };
-
-      window.addEventListener('load', function() {
-        initApp()
-      });
-      </script>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
-		<meta name="google-signin-client_id" content="60159115731-4leen2rhgjkpbtv3f92e7s66rcvun3ca.apps.googleusercontent.com">
-<script src="jquery.min.js"></script>
-<script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
-
-	</head>
-	<body class="landing">
-<!--
-	<script>
-    function onSuccess(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        gapi.client.load('plus', 'v1', function () {
-            var request = gapi.client.plus.people.get({
-                'userId': 'me'
-            });
-            //Display the user details
-            request.execute(function (resp) {
-                var profileHTML = '<div class="profile"><div class="head">Welcome '+resp.name.givenName+'! <a href="javascript:void(0);" onclick="signOut();">Sign out</a></div>';
-                profileHTML += '<div class="proDetails"><p>'+resp.emails[0].value+'</p></div>';
-                $('.userContent').html(profileHTML);
-                $('#gSignIn').slideUp('slow');
-            });
-        });
-    }
-/* <p><a href="'+resp.url+'">View Google+ Profile</a></p>*/
-    function onFailure(error) {
-        alert(error);
-    }
-    function renderButton() {
-        gapi.signin2.render('gSignIn', {
-            'scope': 'profile email',
-            'width': 240,
-            'height': 50,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            $('.userContent').html('');
-            $('#gSignIn').slideDown('slow');
-        });
-    }
-</script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.9&appId=435328590171501";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
- <script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    }
-  }
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '435328590171501',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  }); 
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-  </script>
-  -->
-		<!-- Header -->
-    
-			<header id="header">
-				<h1><a href="index.html">ParkingCha</a></h1>
-				<nav id="nav">
-					<ul>
-            <li id="sign-in-status"></li>
-						<li><a href="mapp.html">Finding Spot</a></li>
-						<li><a href=".html">Recent Search</a></li>
-						<li><a href=".html">My Rates</a></li>
-						<li><a href=".html">Account Setting</a></li>
-						<li><a href=".html">Help</a></li>
-						<li ><a id="loginbutton" href="login.html"></a></li>
-            <li id="logoutbutton" type="button" onclick="Logoutfun()"></li>
-					</ul>
-				</nav>
-			</header>
-
-		<!-- Banner -->
-			<section id="banner">
-				<img src="images/parkingcha.png"  height="20%" width="40%" alt="" />
-				</br>
-
-				<p>找尋車位不再是件困難事</p>
-				<ul class="actions">
-					<li><button class="button special" onclick="document.getElementById('id01').style.display='block'">即刻加入</button>
-						
-					</li>
-				</ul>
-			</section>
-
-	
-
-		<!-- Two -->
-			<section id="two" class="wrapper style2 special">
-				<div class="container">
-					<header class="major">
-						<h2>About Team</h2>
-						<p></p>
-					</header>
-					<section class="profiles">
-						<div class="row">
-							<section class="3u 6u(medium) 12u$(xsmall) profile">
-								<img src="images/profile/賴晨和.jpg" height="90px" width="90px" alt="" />
-								<h4>賴晨禾</h4>
-								<p></p>
-							</section>
-							<section class="3u 6u$(medium) 12u$(xsmall) profile">
-								<img src="images/profile/邱天.jpg" alt="" />
-								<h4>邱天</h4>
-								<p></p>
-							</section>
-							<section class="3u 6u(medium) 12u$(xsmall) profile">
-								<img src="images/profile/陳逸夫.jpg" alt="" />
-								<h4>陳逸夫</h4>
-								<p></p>
-							</section>
-							<section class="3u$ 6u$(medium) 12u$(xsmall) profile">
-								<img src="images/profile/蔡漢龍.jpg" height="90px" width="90px" alt="" />
-								<h4>蔡漢龍</h4>
-								<p></p>
-							</section>
-							<section class="3u 6u(medium) 12u$(xsmall) profile">
-								<img src="images/profile/張芷銓.jpg"
-								height="90px" width="90px" alt="" />
-								<h4>張芷銓</h4>
-								<p></p>
-							</section>
-                            <section class="3u$ 6u$(medium) 12u$(xsmall) profile">
-								<img src="images/profile/李其祐.jpg" height="90px" width="90px" alt="" />
-								<h4>李其祐</h4>
-								<p></p>
-							</section>
-
-						</div>
-					</section>
-					<footer>
-						<p>歡迎查閱我們的github<br>所有關於我們開發的程式碼都在上面</p>
-						<ul class="actions">
-							<li>
-								<a href="https://github.com/tsaihanlung841203/SNA_InitiateTeam" target="_blank" class="button special">Github</a>
-							</li>
-						</ul>
-					</footer>
-				</div>
-			</section>
-
-		<!-- Three -->
-			<section id="three" class="wrapper style3 special">
-				<div class="container">
-					<header class="major">
-						<h2>BUG Report & Suggestion</h2>
-						
-					</header>
-				</div>
-				<div class="container 50%">
-					<form action="#" method="post">
-						<div class="row uniform">
-							<div class="6u 12u$(small)">
-								<input name="name" id="name" value="" placeholder="稱呼" type="text">
-							</div>
-							<div class="6u$ 12u$(small)">
-								<input name="email" id="email" value="" placeholder="電子信箱" type="email">
-							</div>
-							<div class="12u$">
-								<textarea name="message" id="message" placeholder="內容" rows="6"></textarea>
-							</div>
-							<div class="12u$">
-								<ul class="actions">
-									<li><input value="確定傳送" class="special big" type="submit"></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</div>
-			</section>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="container">
-					<section class="links">
-						
-					<div class="row">
-						<div class="8u 12u$(medium)">
-							<ul class="copyright">
-								<li>&copy; ParkingCha. All rights reserved.</li>
-								<li>Design: If Chen</a></li>
-								
-							</ul>
-						</div>
-						<div class="4u$ 12u$(medium)">
-							<ul class="icons">
-								<li>
-									<a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
-								</li>
-								<li>
-									<a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
-								</li>
-								<li>
-									<a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
-								</li>
-								<li>
-									<a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'"  
- class="close" title="Close Modal">&times;</span>
-
-  <!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer" style="position:relative;top:50px;left:25%">
-      <img src="images/parkingcha_bl.png" height="30%" width="50%">
-     </div>
-<br /> 
-   
-    <div class="container">
-    
-  
-  <!--  <div id="sign-in"></div>
-    <div id="account-details"></div>
-    -->
-    <!--<div id="loader">Loading...</div>-->
-    <!--
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-     <br /> 
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-<br /> 
-      <button class="button special" type="submit">Login</button>
-      <div ><b>Or login with</b></div><br>
-     			
-     			-->
-				<!-- HTML for render Google Sign-In button -->
-			<!--	<div id="gSignIn"></div>
-				<br>-->
- 				<!-- HTML for displaying user details -->  
-				<!--
-        <div class="userContent"></div>
-
-				<div  class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" onlogin="checkLoginState()"></div>
-				
-				<div id="status"></div>
-
-     <button class="button special" onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'" >Sign Up</button>
-    </div>
-    -->
-    <div class="container" >
-      <button type="button" class="button special" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <br /> 
-      
-    </div>
-    
-  </form>
-</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
 
 
-<!-- The Modal (contains the Sign Up form) -->
-<div id="id02" class="modal">
-  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content animate" action="/action_page.php">
-   <div class="imgcontainer" style="position:relative;top:50px;left:25%">
-      <img src="images/parkingcha_bl.png" height="30%" width="50%">
-     </div>
-    <div class="container">
-     <br /> 
-     <br /> 
-     <br />  <label><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-<br /> 
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-<br /> 
-      <label><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-     <br /> 
-      <div class="clearfix">
-         <button type="submit" class="button special" class="signupbtn">Sign Up</button>
-         <button type="button" class="button special" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-       
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
+    <link rel="stylesheet" href="css/user.css">
+
+    <meta name="google-signin-client_id" content="60159115731-4leen2rhgjkpbtv3f92e7s66rcvun3ca.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
+
+  </head>
+  <body class="landing">
+    <!-- Header -->
+
+    <header id="header">
+      <h1><a href="index.html">ParkingCha</a></h1>
+      <nav id="nav">
+        <ul>
+          <li><img style="display: none" id="user-img" width="40" height="40"></li>
+          <li id="sign-in-status"></li>
+          <li><a href="mapp.html">Finding Spot</a></li>
+          <li><a id="loginbutton" href="login.html"></a></li>
+          <li id="logoutbutton" type="button" onclick="Logoutfun()"></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+      <img src="images/parkingcha.png" height="20%" width="40%" alt="" />
+      </br>
+
+      <p>找尋車位不再是件困難事</p>
+     
+    </section>
+
+
+
+    <!-- Two -->
+    <section id="two" class="wrapper style2 special">
+      <div class="container">
+        <header class="major">
+          <h2>About Team</h2>
+          <p></p>
+        </header>
+        <section class="profiles">
+          <div class="row">
+            <section class="3u 6u(medium) 12u$(xsmall) profile">
+              <img src="images/profile/賴晨和.jpg" height="90px" width="90px" alt="" />
+              <h4>賴晨禾</h4>
+              <p></p>
+            </section>
+            <section class="3u 6u$(medium) 12u$(xsmall) profile">
+              <img src="images/profile/邱天.jpg" alt="" />
+              <h4>邱天</h4>
+              <p></p>
+            </section>
+            <section class="3u 6u(medium) 12u$(xsmall) profile">
+              <img src="images/profile/陳逸夫.jpg" alt="" />
+              <h4>陳逸夫</h4>
+              <p></p>
+            </section>
+            <section class="3u$ 6u$(medium) 12u$(xsmall) profile">
+              <img src="images/profile/蔡漢龍.jpg" height="90px" width="90px" alt="" />
+              <h4>蔡漢龍</h4>
+              <p></p>
+            </section>
+            <section class="3u 6u(medium) 12u$(xsmall) profile">
+              <img src="images/profile/張芷銓.jpg" height="90px" width="90px" alt="" />
+              <h4>張芷銓</h4>
+              <p></p>
+            </section>
+            <section class="3u$ 6u$(medium) 12u$(xsmall) profile">
+              <img src="images/profile/李其祐.jpg" height="90px" width="90px" alt="" />
+              <h4>李其祐</h4>
+              <p></p>
+            </section>
+
+          </div>
+        </section>
+        <footer>
+          <p>歡迎查閱我們的github<br>所有關於我們開發的程式碼都在上面</p>
+          <ul class="actions">
+            <li>
+              <a href="https://github.com/tsaihanlung841203/SNA_InitiateTeam" target="_blank" class="button special">Github</a>
+            </li>
+          </ul>
+        </footer>
       </div>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style3 special">
+      <div class="container">
+        <header class="major">
+          <h2>BUG Report & Suggestion</h2>
+
+        </header>
+      </div>
+      <div class="container 50%">
+        <form action="#" method="post">
+          <div class="row uniform">
+            <div class="6u 12u$(small)">
+              <input name="name" id="name" value="" placeholder="稱呼" type="text">
+            </div>
+            <div class="6u$ 12u$(small)">
+              <input name="email" id="email" value="" placeholder="電子信箱" type="email">
+            </div>
+            <div class="12u$">
+              <textarea name="message" id="message" placeholder="內容" rows="6"></textarea>
+            </div>
+            <div class="12u$">
+              <ul class="actions">
+                <li><input value="確定傳送" class="special big" type="submit"></li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="container">
+        <section class="links">
+
+          <div class="row">
+            <div class="8u 12u$(medium)">
+              <ul class="copyright">
+                <li>&copy; ParkingCha. All rights reserved.</li>
+                <li>Design: If Chen</a>
+                </li>
+
+              </ul>
+            </div>
+            <div class="4u$ 12u$(medium)">
+              <ul class="icons">
+                <li>
+                  <a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+                </li>
+                <li>
+                  <a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+                </li>
+                <li>
+                  <a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+                </li>
+                <li>
+                  <a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </footer>
+    <!-- The Modal -->
+    <div id="id01" class="modal">
+      
+
+      <!-- Modal Content -->
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer" style="position:relative;top:50px;left:25%">
+          <img src="images/parkingcha_bl.png" height="30%" width="50%">
+        </div>
+        <br />
+
+
+      </form>
     </div>
-  </form>
-</div>
-	</body>
+
+
+    <!-- The Modal (contains the Sign Up form) -->
+    <div id="id02" class="modal">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer" style="position:relative;top:50px;left:25%">
+          <img src="images/parkingcha_bl.png" height="30%" width="50%">
+        </div>
+        <div class="container">
+          <br />
+          <br />
+          <br /> <label><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+          <br />
+          <label><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <br />
+          <label><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+          <br />
+          <div class="clearfix">
+            <button type="submit" class="button special" class="signupbtn">Sign Up</button>
+            <button type="button" class="button special" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="sign.js"></script>
+  </body>
 </html>

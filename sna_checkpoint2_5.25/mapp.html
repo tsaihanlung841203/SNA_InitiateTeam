@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/skel.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/style-xlarge.css" />
+    <link rel="stylesheet" href="css/user.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -38,15 +39,18 @@
     <script>
         // Initialize Firebase
         var config = {
-            apiKey:"AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
-            authDomain:"parkingcha-25963.firebaseapp.com",
-            databaseURL:"https://parkingcha-25963.firebaseio.com",
-            projectId:"parkingcha-25963",
-            storageBucket:"parkingcha-25963.appspot.com",
-            messagingSenderId:"991353312639"
+            apiKey: "AIzaSyAJSS12tv660_DDfMKCutq4lby0JxUyH-4",
+            authDomain: "parkingcha-25963.firebaseapp.com",
+            databaseURL: "https://parkingcha-25963.firebaseio.com",
+            projectId: "parkingcha-25963",
+            storageBucket: "parkingcha-25963.appspot.com",
+            messagingSenderId: "991353312639"
         };
         firebase.initializeApp(config);
     </script>
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
 </head>
 
 <body>
@@ -55,12 +59,15 @@
         <h1><a href="index.html">ParkingCha</a></h1>
         <nav id="nav">
             <ul>
-                <li><a href=".html">Finding Spot</a></li>
+                <li><img style="display: none" id="user-img" width="40" height="40"></li>
+                <li id="sign-in-status"></li>
+                <li><a href="mapp.html">Finding Spot</a></li>
                 <li><a href=".html">Recent Search</a></li>
                 <li><a href=".html">My Rates</a></li>
                 <li><a href=".html">Account Setting</a></li>
-                <li><a href="index.html">Back home</a></li>
-                </li>
+                <li><a href=".html">Help</a></li>
+                <li><a id="loginbutton" href="login.html"></a></li>
+                <li id="logoutbutton" type="button" onclick="Logoutfun()"></li>
             </ul>
         </nav>
     </header>
@@ -132,6 +139,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5G5vAGGIoyo8p_uicFG2Kkckq-oXFq-k&callback=initMap"></script>
     <script src="js/rating.min.js"></script>
     <script src="connectdb.js"></script>
+    <script src="sign.js"></script>
     <script src="map.js"></script>
 
 </body>
